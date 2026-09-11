@@ -181,13 +181,12 @@ export async function extractPdf(
     for (let i = 0; i < boundaries.length; i++) {
       const from = boundaries[i]!.page;
       const to = i + 1 < boundaries.length ? boundaries[i + 1]!.page : pageCount;
-      const text = pageParas
-        .slice(from, to)
-        .flat()
-        .join("\n\n")
-        .trim();
+      const text = pageParas.slice(from, to).flat().join("\n\n").trim();
       if (text.length < 40) continue;
-      chapters.push({ title: boundaries[i]!.title || `Chapter ${chapters.length + 1}`, content: text });
+      chapters.push({
+        title: boundaries[i]!.title || `Chapter ${chapters.length + 1}`,
+        content: text,
+      });
     }
   }
 
@@ -208,11 +207,7 @@ export async function extractPdf(
 
   const guessedTitle =
     metaTitle ||
-    cleanTitle(
-      (pageLines[0] ?? [])
-        .slice()
-        .sort((a, b) => b.height - a.height)[0]?.text ?? "",
-    ) ||
+    cleanTitle((pageLines[0] ?? []).slice().sort((a, b) => b.height - a.height)[0]?.text ?? "") ||
     file.name.replace(/\.pdf$/i, "");
 
   return {

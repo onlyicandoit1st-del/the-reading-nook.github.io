@@ -1,0 +1,6 @@
+{
+  "name": "The Reading Nook",
+  "description": "A calm, literary reading environment and e-reader with reflowable chapters, offline local caching, bookmarks, highlights, and text-to-speech audio support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

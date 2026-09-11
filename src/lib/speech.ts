@@ -35,7 +35,9 @@ const deviceProvider: SpeechProvider = {
   getVoices: async () => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return [];
     const read = () =>
-      window.speechSynthesis.getVoices().map((v) => ({ id: v.voiceURI, label: `${v.name} (${v.lang})` }));
+      window.speechSynthesis
+        .getVoices()
+        .map((v) => ({ id: v.voiceURI, label: `${v.name} (${v.lang})` }));
     const first = read();
     if (first.length) return first;
     return new Promise<Voice[]>((resolve) => {
@@ -70,7 +72,8 @@ const deviceProvider: SpeechProvider = {
       window.speechSynthesis.speak(utterance);
     }),
   stop: () => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+    if (typeof window !== "undefined" && "speechSynthesis" in window)
+      window.speechSynthesis.cancel();
   },
 };
 

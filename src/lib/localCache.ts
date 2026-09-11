@@ -21,7 +21,8 @@ function openDb(): Promise<IDBDatabase> {
         const db = req.result;
         if (!db.objectStoreNames.contains("chapters")) db.createObjectStore("chapters");
         if (!db.objectStoreNames.contains("covers")) db.createObjectStore("covers");
-        if (!db.objectStoreNames.contains("pendingProgress")) db.createObjectStore("pendingProgress");
+        if (!db.objectStoreNames.contains("pendingProgress"))
+          db.createObjectStore("pendingProgress");
       };
       req.onsuccess = () => resolve(req.result);
       req.onerror = () => reject(req.error);
