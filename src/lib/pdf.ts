@@ -236,7 +236,7 @@ export async function renderFirstPageCover(file: File): Promise<Blob | null> {
     canvas.height = Math.round(scaled.height);
     const ctx = canvas.getContext("2d");
     if (!ctx) return null;
-    await page.render({ canvas, canvasContext: ctx, viewport: scaled }).promise;
+    await page.render({ canvasContext: ctx, viewport: scaled }).promise;
     return await new Promise((resolve) => canvas.toBlob((b) => resolve(b), "image/jpeg", 0.85));
   } catch {
     return null;
