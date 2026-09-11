@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { PWAInstallButton } from "@/components/pwa/PWAInstallButton";
 
 interface LibraryViewProps {
   books: Book[];
@@ -90,8 +91,10 @@ export function LibraryView({
           </span>
         </div>
 
-        {/* Minimal action cluster: Profile avatar, divider, hamburger menu, add button */}
-        <div className="flex items-center gap-3">
+        {/* Minimal action cluster: Install app, Profile avatar, divider, hamburger menu, add button */}
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <PWAInstallButton variant="header" theme={theme} />
+
           {/* Avatar button */}
           <button
             id="btn-header-avatar"
@@ -383,6 +386,18 @@ export function LibraryView({
             >
               <span>Reading Preferences</span>
               <Sliders className="w-3.5 h-3.5 text-stone-400" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setIsMenuOpen(false);
+                onOpenSettings();
+              }}
+              className="w-full text-left px-3 py-2.5 rounded-lg text-xs font-serif text-amber-900 bg-amber-50/70 hover:bg-amber-100/60 border border-amber-200/60 flex items-center justify-between"
+            >
+              <span>Download / Install App</span>
+              <Upload className="w-3.5 h-3.5 text-amber-700 rotate-180" />
             </button>
           </div>
 

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a241e"/>
+      <stop offset="100%" stop-color="#181512"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="pageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf8f5"/>
+      <stop offset="100%" stop-color="#ede4d4"/>
+    </linearGradient>
+    <filter id="subtleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+
+  <!-- Inner Gold Inset Border -->
+  <rect x="24" y="24" width="464" height="464" rx="88" fill="none" stroke="url(#goldGrad)" stroke-width="3" stroke-opacity="0.45"/>
+
+  <!-- Center Emblem Group -->
+  <g transform="translate(256, 256)" filter="url(#subtleGlow)">
+    <!-- Golden Asterisk / Star of Illumination -->
+    <g transform="translate(0, -68) scale(1.4)">
+      <!-- 8-point asterisk star -->
+      <path d="M0 -34 L0 34" stroke="url(#goldGrad)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M-34 0 L34 0" stroke="url(#goldGrad)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M-24 -24 L24 24" stroke="url(#goldGrad)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M-24 24 L24 -24" stroke="url(#goldGrad)" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="7" fill="#fbbf24"/>
+    </g>
+
+    <!-- Open Book Vector -->
+    <g transform="translate(0, 48) scale(1.2)">
+      <!-- Left Page -->
+      <path d="M-10 40 C-40 32, -80 34, -110 48 L-110 -24 C-80 -38, -40 -36, -10 -28 Z" fill="url(#pageGrad)" stroke="#c7bcab" stroke-width="2"/>
+      <!-- Right Page -->
+      <path d="M10 40 C40 32, 80 34, 110 48 L110 -24 C80 -38, 40 -36, 10 -28 Z" fill="url(#pageGrad)" stroke="#c7bcab" stroke-width="2"/>
+      <!-- Spine Ridge & Ribbon -->
+      <path d="M0 45 L0 -26" stroke="#b45309" stroke-width="4" stroke-linecap="round"/>
+      <!-- Page text lines hint -->
+      <path d="M-90 -10 C-70 -18, -45 -16, -24 -12" stroke="#b0a595" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M-90 6 C-70 -2, -45 0, -24 4" stroke="#b0a595" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M-90 22 C-70 14, -45 16, -24 20" stroke="#b0a595" stroke-width="2.5" stroke-linecap="round"/>
+
+      <path d="M24 -12 C45 -16, 70 -18, 90 -10" stroke="#b0a595" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M24 4 C45 0, 70 -2, 90 6" stroke="#b0a595" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M24 20 C45 16, 70 14, 90 22" stroke="#b0a595" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

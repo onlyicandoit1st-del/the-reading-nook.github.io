@@ -270,6 +270,7 @@ function Index() {
           preferences={preferences}
           onUpdatePreferences={handleUpdatePreferences}
           onOpenSignIn={() => setIsProfileOpen(true)}
+          onNavigateTab={setActiveTab}
           booksCount={books.length}
           onLibraryReset={() => {
             setBooks([]);
