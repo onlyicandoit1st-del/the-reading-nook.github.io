@@ -14,7 +14,343 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      book_chapters: {
+        Row: {
+          book_id: string
+          char_count: number
+          content: string
+          id: string
+          idx: number
+          title: string
+          user_id: string
+        }
+        Insert: {
+          book_id: string
+          char_count?: number
+          content: string
+          id?: string
+          idx: number
+          title: string
+          user_id: string
+        }
+        Update: {
+          book_id?: string
+          char_count?: number
+          content?: string
+          id?: string
+          idx?: number
+          title?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "book_chapters_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      bookmarks: {
+        Row: {
+          book_id: string
+          chapter_idx: number
+          char_offset: number
+          created_at: string
+          id: string
+          label: string | null
+          user_id: string
+        }
+        Insert: {
+          book_id: string
+          chapter_idx: number
+          char_offset?: number
+          created_at?: string
+          id?: string
+          label?: string | null
+          user_id: string
+        }
+        Update: {
+          book_id?: string
+          chapter_idx?: number
+          char_offset?: number
+          created_at?: string
+          id?: string
+          label?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookmarks_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      books: {
+        Row: {
+          author: string | null
+          chapter_count: number
+          collection_id: string | null
+          cover_path: string | null
+          created_at: string
+          description: string | null
+          file_path: string | null
+          id: string
+          last_read_at: string | null
+          title: string
+          total_chars: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          author?: string | null
+          chapter_count?: number
+          collection_id?: string | null
+          cover_path?: string | null
+          created_at?: string
+          description?: string | null
+          file_path?: string | null
+          id?: string
+          last_read_at?: string | null
+          title: string
+          total_chars?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          author?: string | null
+          chapter_count?: number
+          collection_id?: string | null
+          cover_path?: string | null
+          created_at?: string
+          description?: string | null
+          file_path?: string | null
+          id?: string
+          last_read_at?: string | null
+          title?: string
+          total_chars?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "books_collection_id_fkey"
+            columns: ["collection_id"]
+            isOneToOne: false
+            referencedRelation: "collections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      collections: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      highlights: {
+        Row: {
+          book_id: string
+          chapter_idx: number
+          created_at: string
+          end_offset: number
+          id: string
+          start_offset: number
+          text: string
+          user_id: string
+        }
+        Insert: {
+          book_id: string
+          chapter_idx: number
+          created_at?: string
+          end_offset: number
+          id?: string
+          start_offset: number
+          text: string
+          user_id: string
+        }
+        Update: {
+          book_id?: string
+          chapter_idx?: number
+          created_at?: string
+          end_offset?: number
+          id?: string
+          start_offset?: number
+          text?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "highlights_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      notes: {
+        Row: {
+          body: string
+          book_id: string
+          chapter_idx: number
+          char_offset: number
+          created_at: string
+          highlight_id: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          book_id: string
+          chapter_idx?: number
+          char_offset?: number
+          created_at?: string
+          highlight_id?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          book_id?: string
+          chapter_idx?: number
+          char_offset?: number
+          created_at?: string
+          highlight_id?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notes_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "notes_highlight_id_fkey"
+            columns: ["highlight_id"]
+            isOneToOne: false
+            referencedRelation: "highlights"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      preferences: {
+        Row: {
+          font_family: string
+          font_size: number
+          line_height: number
+          margin: number
+          playback_rate: number
+          theme: string
+          updated_at: string
+          user_id: string
+          voice: string | null
+          voice_provider: string
+        }
+        Insert: {
+          font_family?: string
+          font_size?: number
+          line_height?: number
+          margin?: number
+          playback_rate?: number
+          theme?: string
+          updated_at?: string
+          user_id: string
+          voice?: string | null
+          voice_provider?: string
+        }
+        Update: {
+          font_family?: string
+          font_size?: number
+          line_height?: number
+          margin?: number
+          playback_rate?: number
+          theme?: string
+          updated_at?: string
+          user_id?: string
+          voice?: string | null
+          voice_provider?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      reading_progress: {
+        Row: {
+          book_id: string
+          chapter_idx: number
+          char_offset: number
+          percent: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          book_id: string
+          chapter_idx?: number
+          char_offset?: number
+          percent?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          book_id?: string
+          chapter_idx?: number
+          char_offset?: number
+          percent?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reading_progress_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: true
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
